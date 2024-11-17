@@ -43,3 +43,8 @@ def get_notes(db: Annotated[Session, Depends(get_db)]):
     notes = db.scalars(select(Note)).all()
     return_notes = [{**note.to_dict()} for note in notes]
     return return_notes
+
+
+@app.get("/hello")
+def hello():
+    return {"hello": "I am test_service"}
