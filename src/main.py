@@ -48,3 +48,10 @@ def get_notes(db: Annotated[Session, Depends(get_db)]):
 @app.get("/hello")
 def hello():
     return {"hello": "I am test_service"}
+
+
+@app.get("/hello_2")
+def hello_two():
+    return {"hello": "I am test_service"}
+
+
