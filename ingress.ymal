@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: hello-world.example
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8080
+          - path: /testservicea
+            pathType: Prefix
+            backend:
+              service:
+                name: testservicea
+                port:
+                  number: 8080
+          - path: /testserviceb
+            pathType: Prefix
+            backend:
+              service:
+                name: testserviceb
+                port:
+                  number: 8080
+
+
+

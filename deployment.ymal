@@ -16,9 +16,12 @@ spec:
     spec:
       containers:
       - name: testservicea
-        image: 6regmcc/servicenew:16
+        image: 6regmcc/servicenew:24
         ports:
         - containerPort: 8080
+        envFrom:
+            - configMapRef:
+                name: testservicea-config
 
 ---
 apiVersion: v1
@@ -40,7 +43,7 @@ metadata:
   name: testservicea-config
   labels:
     app: testservicea
-
 data:
-  DATABASE_URL: sqlite:///database.db
-  ENVIRONMENT: dev
+  DATABASE_URL: "sqlite:///database.db"
+  ENVIRONMENT: "dev"
+  ROOT_PATH: "/testservicea"

@@ -4,7 +4,7 @@ from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
 
-engine = create_engine("sqlite:///database.db")
+engine = create_engine(os.environ.get("DATABASE_URL"))
 SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
 
 

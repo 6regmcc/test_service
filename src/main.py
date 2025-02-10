@@ -3,6 +3,8 @@ from contextlib import asynccontextmanager
 from typing import Annotated
 
 from fastapi import FastAPI, Depends
+from fastapi.openapi.utils import get_openapi
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -21,7 +23,11 @@ async def lifespan(app: FastAPI):
     print(f'Current env is {os.environ.get("ENVIRONMENT")}')
     yield
 
-app = FastAPI(lifespan=lifespan)
+
+app = FastAPI(lifespan=lifespan,
+              root_path=os.environ.get("ROOT_PATH"),
+              openapi_url='/testservicea/openapi.json',
+              )
 
 
 @app.get("/")
@@ -55,3 +61,6 @@ def hello_two():
     return {"hello": "I am test_service"}
 
 
+@app.get("/send_message")
+def send_message():
+    pass
