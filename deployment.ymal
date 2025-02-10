@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: testservicea
-        image: 6regmcc/servicenew:24
+        image: 6regmcc/servicenew:28
         ports:
         - containerPort: 8080
         envFrom:

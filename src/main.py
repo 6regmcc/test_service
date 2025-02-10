@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from db_connection import db_create_all, get_db
 from model import Note
 from schema import CreateNote
+from send import send
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -63,4 +64,5 @@ def hello_two():
 
 @app.get("/send_message")
 def send_message():
-    pass
+    send()
+    return {"mgs": "sent message"}
