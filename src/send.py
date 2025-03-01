@@ -1,9 +1,10 @@
-import pika
+"""import pika
 
 def send():
     credentials = pika.PlainCredentials('default_user_76OfnLbsBcbM1bz9WgU', 'fqg-oAhmS8jJG0HCxib6Ub_DBFQ0IEcS')
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='hello-world', credentials=credentials))
+        #pika.ConnectionParameters(host='hello-world', credentials=credentials))
+        pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
     channel.queue_declare(queue='hello')
@@ -13,3 +14,4 @@ def send():
     connection.close()
 
 
+"""

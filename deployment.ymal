@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: testservicea
-        image: 6regmcc/servicenew:28
+        image: 6regmcc/servicenew:42
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         envFrom:
@@ -44,6 +45,14 @@ metadata:
   labels:
     app: testservicea
 data:
-  DATABASE_URL: "sqlite:///database.db"
+  DATABASE_URL: "postgresql+psycopg://ps_user:SecurePassword@testservicea-db.default.svc.cluster.local:80/ps_db"
   ENVIRONMENT: "dev"
   ROOT_PATH: "/testservicea"
+  POSTGRES_DB: ps_db
+  POSTGRES_USER: ps_user
+  POSTGRES_PASSWORD: SecurePassword
+
+
+
+
+

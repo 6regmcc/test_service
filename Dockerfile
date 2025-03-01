@@ -27,13 +27,13 @@ RUN apk add --update curl && \
 
 ENV VIRTUAL_ENV=/app/.venv \
     PATH="/app/.venv/bin:$PATH"
-#ENV DATABASE_URL="sqlite:///database.db"
-#ENV ENVIRONMENT="dev"
-
+ENV DATABASE_URL="sqlite:///database.db"
+ENV ENVIRONMENT="dev"
+ENV ROOT_PATH="/"
 
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 COPY src ./src
 
 EXPOSE 8080
-CMD ["fastapi", "run", "src/main.py", "--host", "0.0.0.0",  "--port", "8080"]
+CMD ["fastapi", "dev", "src/main.py", "--host", "0.0.0.0",  "--port", "8080"]

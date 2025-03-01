@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
 
 engine = create_engine(os.environ.get("DATABASE_URL"))
+
 SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
 
 
@@ -22,6 +23,8 @@ class Base(DeclarativeBase):
 
 
 def db_create_all():
-    # Base.metadata.clear()
-    # Base.metadata.drop_all(bind=engine)
+    print('called create all')
+    #Base.metadata.clear()
+
+    #Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine, checkfirst=True)
